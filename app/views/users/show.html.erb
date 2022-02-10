@@ -1,0 +1,10 @@
+<h1>List users</h1>
+<% @user.each do |user|%>
+<p>
+   <strong>Email:</strong> <%= user.name %><br />
+   <strong>Password:</strong> ****<%= user.password %><br /><br />
+
+    <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+            
+</p>
+<% end %>

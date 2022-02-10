@@ -1,0 +1,40 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.block{
+    background-color: rgb(126, 121, 121);
+    height:500px;
+    position: relative;
+    width:50%;
+    right:-25%;
+    box-shadow: 0 0 5px 5px #00000096;
+    .login-show{
+        position: absolute;
+        left: 20%;
+        top: 20%;
+        h2{
+            text-align: center;
+           
+            left: 20%;
+        }
+       
+        input{
+        margin: 15px;
+        width: 300px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 20px;
+        text-align: center;
+        }
+         
+    }
+
+    .btn_log input{
+        width: 70px;
+        height: 40px;
+        position: absolute;
+        top: 350px;
+        left: 42%;
+    }
+    
+}
