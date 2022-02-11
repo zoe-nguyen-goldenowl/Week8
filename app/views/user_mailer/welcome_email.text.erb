@@ -2,8 +2,11 @@ Welcome to example.com, <%= @user.name %>
 ===============================================
 
 You have successfully signed up to example.com,
-your username is: <%= @user.login %>.
+your username is: <%= @user.name %>.
 
-To login to the site, just follow this link: <%= @url %>.
+To login to the site, just follow this link: <%= link_to "click", verify_url(@user.id), method: :put%>
 
 Thanks for joining and have a great day!
+
+
+

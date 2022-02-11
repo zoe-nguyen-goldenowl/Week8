@@ -10,6 +10,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <section class="content">
+    <div class= "top_menu">
+
+    </div>
+    <div class="menu_list" >
+        <ul>
+          <li><%= link_to 'Home' %></li>
+          <li><%= link_to 'Products'%></li>
+          <li><%= link_to 'Users'%></li>
+          <li><%= link_to 'Logout'%></li>
+        </ul>
+    </div>
+
+  </section>
+
   <body>
     <%= yield %>
   </body>
