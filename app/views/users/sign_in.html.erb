@@ -4,6 +4,7 @@
         <% if @user.nil? %>
             
         <%else%>
+          
             <% if @user.errors.any? %>
                 <h1>Errors</h1>
                 <ul>
@@ -15,7 +16,7 @@
         <%end%>
     </div>
 
-    <%= form_with  url:"/sig_in" , method: :post  do |form| %>
+    <%= form_with  url:"/sign_in" , method: :post  do |form| %>
         <div class="login-show">
             <h2>LOG IN</h2>
             <%= form.text_field :name, placeholder: "Email" %><br>
@@ -25,6 +26,9 @@
         <div class="btn_log">
             <%= form.submit "Log in"%>
         </div>
-          
+
+         <div class="menu_list">
+            <%= link_to 'Forgot password', forgot_password_path %> 
+        </div> 
     <%end%>
 </div>

@@ -18,16 +18,16 @@
         <div class="login-show">
             <h2>Create account</h2>
             <%= f.text_field :name, placeholder: "Email" %><br>
-            <%= f.password_field :password, placeholder: "password" %>
+            <%= f.password_field :password %>
         </div>
 
         <div class="btn_log">
-              <%= f.submit "Sig up" %> 
-        </div>
-
-        <div>
-            <%= link_to 'Sig in', sig_in_path %>
-        </div>
-          
+            <%= f.submit "Create" %> 
+        </div>    
     <%end%>
+
+    <div class="menu_list">
+        <%= link_to 'Sign in', sign_in_path %> 
+    </div>
+    
 </div>

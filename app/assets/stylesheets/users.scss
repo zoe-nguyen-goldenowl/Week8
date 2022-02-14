@@ -2,12 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .block{
-    background-color: rgb(126, 121, 121);
-    height:500px;
+    height: 400px;
     position: relative;
-    width:50%;
-    right:-25%;
-    box-shadow: 0 0 5px 5px #00000096;
+    width: 45%;
+    right: -30%;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+    margin-top: 30px;
     .login-show{
         position: absolute;
         left: 20%;
@@ -22,9 +24,10 @@
         margin: 15px;
         width: 300px;
         height: 40px;
-        border-radius: 10px;
+        border-radius: 20px;
         font-size: 20px;
         text-align: center;
+        box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
         }
          
     }
@@ -33,11 +36,40 @@
         width: 70px;
         height: 40px;
         position: absolute;
-        top: 350px;
+        top: 320px;
         left: 42%;
+        background-color: #768288;
+        color: #fff;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
+        letter-spacing: 1.3px;
     }
-    
+
+    .menu_list{
+        font-size: 15px;
+        position: absolute;
+        margin: 10px;
+    }  
 }
 
+.block_list{
+    position: relative;
+    margin: 20px;
+    left: 20%;
+    .list_all_users{
+        p{
+            size: 20px;
 
+        }
+    }
+}
 
+.change_pass{
+    position: relative;
+    left: 20%;
+}
+
+.confirm_pass{
+    position: relative;
+    left: 20%;
+}

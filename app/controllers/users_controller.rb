@@ -1,7 +1,5 @@
 require 'digest'
 class UsersController < ApplicationController
-
-
     def index
     end
 
@@ -15,7 +13,6 @@ class UsersController < ApplicationController
         if @user.save
             user = User.find_by(name: @user.name)
             user.update(token: token)
-            user.save
             
             redirect_to user_path(@user)
             UserMailer.welcome_email(@user).deliver_now
@@ -26,19 +23,17 @@ class UsersController < ApplicationController
             render :index 
         end
     end
-    
-    def sig_in
-    end
 
     def login
         user = User.find_by(name: params[:name])
-        
-        if user.authenticate(params[:password]) && user.is_verify
+    
+        if user && user.authenticate(params[:password]) && user.is_verify
             redirect_to successful_path
+            
         else
-
-            redirect_to sig_in_path
+            flash.now[:alert] = "Email or password is invalid"
         end
+        
     end 
 
     def destroy
@@ -50,9 +45,32 @@ class UsersController < ApplicationController
     end
 
     def verify
-        user = User.find(params[:user])
-        debugger
-        if user && user.token == params[:token]
+        user= User.find_by(name: params[:name])
+        
+        if user.token == params[:token]
+            user.update(is_verify: 'true')
+            user.save
+        end
+        
+    end
+
+    def forgot_password 
+        if params[:name] != nil
+            @user = params[:name]
+            UserMailer.check_password(@user).deliver_now
+        end
+    end
+
+    def change_pass
+        if  params[:password] != nil && params[:password_confirm]
+            
+            if params[:password] == params[:password_confirm]
+              user =User.find_by(name: params[:name])
+              user.password = params[:password]
+              user.save
+            else
+
+            end
 
         end
     end

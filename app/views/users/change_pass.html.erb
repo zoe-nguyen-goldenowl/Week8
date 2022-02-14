@@ -1,0 +1,12 @@
+<div class="confirm_pass">
+    <%=form_with url:"/change_pass" do |form|%>   
+        <h2>Change password </h2>
+        <p>Email user:</p>
+        <%=form.text_field  :name%>
+        <p>New password:</p>
+        <%=form.password_field  :password%>
+        <p>Confirm password:</p>
+        <%=form.password_field :password_confirm%><br>
+        <%=form.submit "Change"%>
+    <%end%>
+</div>
