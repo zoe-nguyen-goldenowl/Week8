@@ -3,8 +3,8 @@ class UserMailer < ApplicationMailer
   default from: "from@example.com"
 
   def check_password user
-
-    mail(to: user, subject: 'Sample Email')	
+    @user = user
+    mail(to: @user.name, subject: 'Sample Email')	
   end
 
   def welcome_email user

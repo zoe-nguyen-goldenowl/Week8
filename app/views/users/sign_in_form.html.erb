@@ -1,0 +1,47 @@
+<div class="block">
+    <% flash.each do |type, msg| %>
+        <div>
+            <%= msg %>
+        </div>
+    <% end %>
+    <%= form_with  url:"/sign_in", method: :post do |form| %>
+        <div class = "errors">
+            <% if @user.nil? %>
+            <%else%>
+                <% if @user.errors.any? %>
+                    <h1>Errors</h1>
+                    <ul>
+                        <% @user.errors.full_messages.each do |m|%> 
+                        <li> <%= m %> </li>
+                        <% end %>
+                    </ul>
+                <%end%>
+            <%end%>
+        </div>
+
+        <div class="login-show">
+            <h2>LOG IN</h2>
+            <%= form.text_field :name, placeholder: "Email" %><br>
+            <%= form.password_field :password, placeholder: "password" %>
+        </div>
+
+        <div class="btn_log">
+            <%= form.submit "Log in"%>
+        </div>
+
+         <div class="menu_list">
+            <%= link_to 'Forgot password', forgot_password_path %> 
+        </div> 
+
+        <div class="check_remember">
+            <label> ||
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+            <%= t('remember me') %>
+            </label>
+        </div>
+
+        <div class="sign_in">
+            <%= link_to 'Sign up', sign_up_path %> 
+        </div>
+    <%end%>
+</div>

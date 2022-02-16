@@ -9,11 +9,11 @@
     background-color: #ecf0f3;
     border-radius: 15px;
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
-    margin-top: 30px;
+    margin-top: 20px;
     .login-show{
         position: absolute;
         left: 20%;
-        top: 20%;
+        top: 14%;
         h2{
             text-align: center;
            
@@ -36,7 +36,7 @@
         width: 70px;
         height: 40px;
         position: absolute;
-        top: 320px;
+        top: 300px;
         left: 42%;
         background-color: #768288;
         color: #fff;
@@ -47,9 +47,28 @@
 
     .menu_list{
         font-size: 15px;
-        position: absolute;
-        margin: 10px;
+        position: relative;
+        top:360px;
+        left: 23%;
     }  
+
+    .link_sign_in{
+        position: relative;
+        top:360px;
+        left: 43%;
+    }
+
+    .check_remember{
+        position: relative;
+        top: 342px;
+        left: 48%;
+    }
+
+    .sign_in{
+        position: absolute;
+        top: 2%;
+        margin: 5px 15px;
+    }
 }
 
 .block_list{
@@ -70,6 +89,11 @@
 }
 
 .confirm_pass{
+    position: relative;
+    left: 20%;
+}
+
+.successful_pag{
     position: relative;
     left: 20%;
 }
