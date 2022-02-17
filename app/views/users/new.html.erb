@@ -1,0 +1,33 @@
+<div class="block">
+    <%= form_for :user, method: :post  do |f| %>
+         <div class = "errors">
+            
+            <%if @user.nil?%>
+            <%else%>
+                <% if @user.errors.any? %>
+                    <h3>Errors</h3>
+                    <ul>
+                        <% @user.errors.full_messages.each do |m|%> 
+                        <li> <%= m %> </li>
+                        <% end %>
+                    </ul>
+                <%end%>
+            <%end%>
+        </div>
+
+        <div class="login-show">
+            <h2>Create account</h2>
+            <%= f.text_field :name, placeholder: "Email" %><br>
+            <%= f.password_field :password %>
+        </div>
+
+        <div class="btn_log">
+            <%= f.submit "Create" %> 
+        </div>    
+    <%end%>
+
+    <div class="link_sign_in">
+        <%= link_to 'Sign in', sign_in_form_path %> 
+    </div>
+    
+</div>

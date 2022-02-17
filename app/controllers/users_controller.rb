@@ -1,47 +1,53 @@
 require 'digest'
 
 class UsersController < ApplicationController
-    before_action :current_user
-
-    before_action :successful, only: [:change_pass]
+    before_action :set_user, only: [:destroy]
+    before_action :change_pass, only: [:check_password_view]
+    before_action :log_in_successful_view, only: [:change_pass]
+    
     def index
-      
+        @user = User.all
     end
 
     def sign_in
         if @current_user
             redirect_to successful_path(@current_user)
        else
-            redirect_to users_url
+            redirect_to sign_in_form_path
        end
     end
 
     def show
-        @user = User.all
     end
 
+    def new
+    end
+     
     def create
         @user = User.new(user_params)
         token =  Digest::MD5.hexdigest(@user.name)
+        
         if @user.save
             user = User.find_by(name: @user.name)
             user.update(token: token)
             UserMailer.welcome_email(@user).deliver_now
-            redirect_to user_path(@user)
-            
-            # format.html { redirect_to(@user, notice: 'User was successfully created.') }
-            # format.json { render json: @user, status: :created, location: @user }
+            flash[:save_successful] = "Create account successful! Check your mail"
+            redirect_to users_path(user)
         else
-            render :index 
+            respond_to do |format|
+                format.html { render :new }
+                format.json { render json: @user.errors, status: :unprocessable_entity }
+            end
         end
     end
 
     def destroy
-        set_user.destroy
-        session[:current_user_id] = nil
-        respond_to do |format|
-            format.html { redirect_to user_path, notice: "User was successfully destroyed." }
-            format.json { head :no_content }
+        if @user.destroy 
+            cookies.delete(:remember_token)
+            redirect_to users_path
+        else
+            flash[:sestroy] = "Delete user fail!!"
+            redirect_to users_url
         end
     end
 
@@ -50,44 +56,59 @@ class UsersController < ApplicationController
         
         if user.token == params[:token]
             user.update(is_verify: 'true')
-            user.save
+            flash[:verify] = "verify successful!!"
+            redirect_to users_url
+        else
+            user.update(is_verify: 'false')
+            flash[:verify] = "verify fail!!"
             redirect_to users_url
         end
         
     end
 
     def forgot_password 
-        debugger
         if params[:name] != nil
-            @user =User.find_by(name: params[:name])
-            @user.token_change_pass= rand(0..100).to_s
-            @user.save
-            UserMailer.check_password(@user).deliver_now
+            user= User.find_by(name: params[:name])
+            random= rand(0..100).to_s
+            user.update(token_change_pass: random)
+            UserMailer.check_mail(user).deliver_now
         end
     end
 
-    def new_password
+    def check_password_view
         @user= User.find_by(name: params[:name])
         if @user.token_change_pass == params[:token_change_pass]
             render :new_password
-            
-        end
-    end
-
-    def change_pass 
-        if params[:password] == nil || params[:password_confirm] == nil
-            flash[:notice]="Password nil!!"
         else
-            user= User.find_by(name: params[:name])
-            if params[:password] == params[:password_confirm]
-                user.password = params[:password]
-                user.save     
-                render  :index
+            respond_to do |format|
+            
+                format.json{render json.alert("Check your mail!!")}
             end
         end
     end
 
-    def successful
+    def change_pass 
+        if params[:name].length == 0 || params[:password_field].length == 0 || params[:password_confirm].length == 0
+            flash[:notice] = "Password and email not nul!!"
+            redirect_to new_password_path
+        elsif params[:password_field] != params[:password_confirm]
+            flash[:notice] = "Check password and password confirm!!"
+            redirect_to new_password_path
+        else
+            user= User.find_by(name: params[:name])
+            
+            if !user.nil?
+                user.update(password: params[:password_field])
+                redirect_to sign_in_form_path
+            else
+                flash[:notice] = "User name not exist!!"
+                redirect_to new_password_path    
+            end
+        end
+        
+    end
+
+    def log_in_successful_view
         @user =  User.find_by(id: params[:id])
     end
 

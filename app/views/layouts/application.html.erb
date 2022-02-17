@@ -12,13 +12,20 @@
 
   <section class="content">
     <div class= "top_menu">
-
+      <% flash.each do |key, value| %>
+        <div id="error_explanation">
+          <div class="alert alert-#{key}">
+            <%= value unless value.blank? %>
+          </div>
+        </div>
+      <% end %>
     </div>
+    
     <div class="menu_list" >
         <ul>
           <li><%= link_to 'Home', root_path%></li>
           <li><%= link_to 'Products'%></li>
-          <li><%= link_to 'Users', users_path%></li>
+          <li><%= link_to 'Users', sign_up_path%></li>
           <li><%= link_to 'Log in', sign_in_path%></li>
         </ul>
     </div>

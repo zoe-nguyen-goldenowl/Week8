@@ -1,0 +1,7 @@
+<%form_with url:"/verify" do, method: :get |f|%>
+    <div class="verify_page">
+        <%if flash[:verify]%>
+            <%=flash[:verify]%>
+        <%end%>
+    </div>
+<%end%>

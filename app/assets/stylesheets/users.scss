@@ -10,6 +10,26 @@
     border-radius: 15px;
     box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
     margin-top: 20px;
+
+    .errors{
+        position: relative;
+        margin-top: 5px;
+        h3{
+            position: relative;
+            left: 25px;
+            top: 10px;
+            color: red;
+        }
+        
+        ul{
+            li{
+                font-size: 12px;
+                color: red;
+                font-style: italic;
+            }
+        }
+    }
+
     .login-show{
         position: absolute;
         left: 20%;
@@ -91,9 +111,21 @@
 .confirm_pass{
     position: relative;
     left: 20%;
+    .alert_change_pass{
+     position: relative;
+     top: 30%;
+     color: red;
+     font-style: italic;
+     
+    }
 }
 
 .successful_pag{
+    position: relative;
+    left: 20%;
+}
+
+.verify_page{
     position: relative;
     left: 20%;
 }

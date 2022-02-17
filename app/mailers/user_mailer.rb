@@ -2,7 +2,7 @@ require 'digest'
 class UserMailer < ApplicationMailer
   default from: "from@example.com"
 
-  def check_password user
+  def check_mail user
     @user = user
     mail(to: @user.name, subject: 'Sample Email')	
   end
