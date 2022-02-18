@@ -1,0 +1,9 @@
+<div class="edit_user">
+<h2>Edit user</h2>
+    <%=form_with url:"/edit",method: :get do |form|%>
+        <%=form.text_field :id, value: @user.id%><br>
+        <%=form.text_field :name, value: @user.name, class: "txt" %><br>
+        <%=form.text_field :password, value: @user.password_digest, class: "txt" %> <br>
+        <%=button_to "Edit", edit_path(@user), class: "btn"%>
+    <%end%>
+</div>

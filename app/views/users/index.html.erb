@@ -7,7 +7,8 @@
                 <strong>Email:</strong> <%= user.name %><br />
                 <strong>Password:</strong> ****<%=  %><br /><br />
 
-                <%= link_to 'Destroy', user ,method: :delete, data: { confirm: 'Are you sure?' } %>           
+                <%= link_to 'Destroy', user ,method: :delete, data: { confirm: 'Are you sure?' } %>||
+                <%= link_to 'Detail', edit_user_path(user)%>           
                 </p>
             </div>
         </div>

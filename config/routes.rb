@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "change_pass" => "users#change_pass"
 
   post "sign_in" => "sessions#login"
-  # post "forgot_password" => "users#forgot_password"
   post 'auth_user' => 'authentication#authenticate_user'
   post "new" => "users#create"
 
@@ -15,7 +14,8 @@ Rails.application.routes.draw do
   get "sign_in" => "users#sign_in"
   get "sign_in_form" => "users#sign_in_form"
   get "new" => "users#new", as: "sign_up"
-  
+
+  get "edit" => "users#edit_user"
   resources :users
   root to:"users#root_page", as: "root"
   

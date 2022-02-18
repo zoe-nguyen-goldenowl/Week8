@@ -129,3 +129,23 @@
     position: relative;
     left: 20%;
 }
+
+.edit_user{ 
+    top: 10px;
+    position: relative;
+    left: 20%;
+    .txt{
+        border-radius: 15px;
+        background-color: #ccdbdb1f;
+        height: 50px;
+        margin: 15px;
+        position: relative;
+        font-size: 20px
+    }
+    .btn{
+        width: 80px;
+        height: 40px;
+        margin: 15px;
+        border-radius: 10px;
+    }
+}

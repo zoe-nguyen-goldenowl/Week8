@@ -1,12 +1,13 @@
 require 'digest'
 
 class UsersController < ApplicationController
-    before_action :set_user, only: [:destroy]
+    before_action :set_user, only: [:destroy, :edit]
+    
     before_action :change_pass, only: [:check_password_view]
     before_action :log_in_successful_view, only: [:change_pass]
-    
+
     def index
-        @user = User.all
+        @user = User.is_verify
     end
 
     def sign_in
@@ -22,7 +23,23 @@ class UsersController < ApplicationController
 
     def new
     end
-     
+
+    def edit
+    end
+    
+    def edit_user
+        name= params[:name]
+        pass= params[:password]
+        user= User.find_by(id: params[:id])
+        if user.update(name: name, password: pass)
+            flash[:edit] = "Edit account successful!"
+            redirect_to users_path
+        else
+            flash[:edit] = "Edit fail!"
+            redirect_to users_path
+        end
+    end
+
     def create
         @user = User.new(user_params)
         token =  Digest::MD5.hexdigest(@user.name)
@@ -34,10 +51,8 @@ class UsersController < ApplicationController
             flash[:save_successful] = "Create account successful! Check your mail"
             redirect_to users_path(user)
         else
-            respond_to do |format|
-                format.html { render :new }
-                format.json { render json: @user.errors, status: :unprocessable_entity }
-            end
+            flash[:create_fails] = "#{@user.errors.full_messages}"
+            redirect_to new_path
         end
     end
 

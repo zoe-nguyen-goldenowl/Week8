@@ -1,28 +1,55 @@
-<div class="block">
-    <%= form_with  url:"/sign_in", method: :post do |form| %>
-        <div class="login-show">
-            <h2>LOG IN</h2>
-            <%= form.text_field :name, placeholder: "Email" %><br>
-            <%= form.password_field :password, placeholder: "password" %>
-        </div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-        <div class="btn_log">
-            <%= form.submit "Log in"%>
-        </div>
+<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png" alt="IMG">
+				</div>
+                <%= form_with  url:"/sign_in", method: :post do |form| %>
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title">
+                            Member Login
+                        </span>
 
-         <div class="menu_list">
-            <%= link_to 'Forgot password', forgot_password_path %> 
-        </div> 
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            
+                            <%= form.text_field :name, placeholder: "Email", class: "input100"%>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </span>
+                        </div>
 
-        <div class="check_remember">
-            <label> ||
-            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-            <%= t('remember me') %>
-            </label>
-        </div>
+                        <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                           <%= form.password_field :password, placeholder: "password", class: "input100" %>
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
 
-        <div class="sign_in">
-            <%= link_to 'Sign up', sign_up_path %> 
-        </div>
-    <%end%>
-</div>
+                        <div class="container-login100-form-btn">
+                                <%= form.submit "Log in", class:"login100-form-btn"%>
+                        </div>
+
+                        <div class="text-center p-t-12">
+                            <span class="txt1">
+                                Forgot
+                            </span>
+
+                            <%= link_to 'password', forgot_password_path, class:"txt2" %> <br><br>
+                           
+                            <a class="txt2">
+                                 <%= link_to 'Create your Account', new_path, class:"txt2" %>
+                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </form>
+                <%end%>
+			</div>
+		</div>
+	</div>

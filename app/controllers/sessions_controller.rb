@@ -3,10 +3,12 @@ class SessionsController < ApplicationController
 
     def login
         @user = User.find_by(name: params[:name])
-        if params[:name].length==0 || params[:password].length==0
+        if params[:name].blank? || params[:password].blank?
             flash[:login] = "User name and password not null!!"
             redirect_to sign_in_form_path
-
+        elsif  @user.nil?
+            flash[:login] = "User not exit!!"
+            redirect_to sign_in_form_path
         elsif !@user.is_verify
             flash[:login] = "Check your mail!!"
             redirect_to sign_in_form_path

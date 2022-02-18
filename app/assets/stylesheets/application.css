@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.content{
+    margin: 0;
+    padding: 0;
+    
+}
+.top_menu{
+    width: 100%;
+    height: 55px;
+    background-color: #f9f9f9;
+    text-align: center;
+    position: relative;
+}
+.error_explanation{
+    position: absolute;
+    width: auto;
+    background-color: aquamarine;
+    text-align: center;
+    left: 40%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.collapse{
+    position: relative;
+    z-index: 1;
+
+}
+
+.navbar_nav{
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    float: right;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.nav-item{
+z-index: 1000;
+padding: 5px;
+background-color: #f8f5fb;
+border-radius: 5px;
+margin: 5px;
+}
+.content{
+    position: relative;
+    display: flex;
+}
+.conten_center{
+    position: relative;
+    width: 500px;
+    height:auto;
+    left: 200px;
+
+}
+
+.conten_left{
+    width: 200px;
+    height: 100%;
+    background-color: blanchedalmond;
+    position: absolute;
+}
